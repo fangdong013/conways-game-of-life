@@ -7,6 +7,7 @@ If you don't know what game of life is, [this wikipedia article.](https://en.wik
 Current functionality:
  + displays a graph of randomly generated cells which abide by 23/3 rules of GoL (by default)
  + the rules can be changed based on two vectors
+ + simple GUI displaying a simulation based on a randomly generated grayscale matrix
 
 To be implemented:
  + GUI that will contain:
@@ -14,5 +15,5 @@ To be implemented:
    + rule change option
    + grid size options
    + color options
-+ display of generation count
-+ display of time passed
+   + display of generation count
+   + display of time passed
