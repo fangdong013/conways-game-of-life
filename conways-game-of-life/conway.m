@@ -1,12 +1,11 @@
-function [boolean] = conway(boolean)
+function [] = conway(matrix)
 
-running = boolean;
-A = randi([0 1], 150, 150);
+A = matrix;
 
-    while running
-        gridGenerator(A)
-        pause(0.0001)
-        A = nextMat(A, checkMat(A));
-    end
+
+gridGenerator(A)
+pause(0.0001)
+A = nextMat(A, checkMat(A));
+   
 end
     

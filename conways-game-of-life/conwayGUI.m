@@ -22,7 +22,7 @@ function varargout = conwayGUI(varargin)
 
 % Edit the above text to modify the response to help conwayGUI
 
-% Last Modified by GUIDE v2.5 11-Jan-2017 11:07:10
+% Last Modified by GUIDE v2.5 11-Jan-2017 11:29:30
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -297,14 +297,37 @@ set(hObject, 'RowName', {'Alive cells', 'Dead cells'}, 'ColumnName', {'0', '1', 
 
 % --- Executes on button press in start_sim.
 function start_sim_Callback(hObject, eventdata, handles)
-conway(true);
+handles.A = randi([0 1], 150, 150);
+
+guidata(hObject,handles);
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 
 
 % --- Executes on button press in stop_sim.
 function stop_sim_Callback(hObject, eventdata, handles)
-conway(false)
 % hObject    handle to stop_sim (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in togglebutton1.
+function togglebutton1_Callback(hObject, eventdata, handles)
+while get(hObject, 'Value')
+    conway(handles.A);
+    B = A;
+end
+
+function conwaysLoop(hObject)
+    handles = guidata(hObject);
+    while handles.loop_condition
+        
+        
+    end
+    guidata(hObject, handles);
+
+% hObject    handle to togglebutton1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hint: get(hObject,'Value') returns toggle state of togglebutton1
