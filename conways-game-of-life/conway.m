@@ -1,12 +1,10 @@
-clc;
-clear all;
- 
+function [outputMatrix] = conway(inputMatrix)
 
-A = randi([0 1], 100, 100);
+% A = randi([0 1], 100, 100);
 
-while true
-    gridGenerator(A)
+% while true
+    gridGenerator(inputMatrix)
     pause(0.0001)
-    A = nextMat(A, checkMat(A));
+    outputMatrix = nextMat(inputMatrix, checkMat(inputMatrix));
 end
     
