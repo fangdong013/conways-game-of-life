@@ -18,14 +18,12 @@ end
 
 function conwayGUI_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output = hObject;
-
 guidata(hObject, handles);
 
 
 
 
 function varargout = conwayGUI_OutputFcn(hObject, eventdata, handles) 
-
 varargout{1} = handles.output;
 
 function startButton_Callback(hObject, eventdata, handles)
@@ -48,9 +46,10 @@ global flag
     flag = false;
 
 function speedSlider_Callback(hObject, eventdata, handles)
+handles.simSpeed = max(0.0001, get(hObject,'Value'));
+guidata(hObject, handles);
 
 function speedSlider_CreateFcn(hObject, eventdata, handles)
-
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor',[.9 .9 .9]);
 end
