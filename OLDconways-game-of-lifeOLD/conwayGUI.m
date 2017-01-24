@@ -20,9 +20,6 @@ function conwayGUI_OpeningFcn(hObject, eventdata, handles, varargin)
 handles.output = hObject;
 guidata(hObject, handles);
 
-
-
-
 function varargout = conwayGUI_OutputFcn(hObject, eventdata, handles) 
 varargout{1} = handles.output;
 
@@ -32,7 +29,10 @@ global flag
 % A is a matrix for testing     
 A = randi([0 1], 100, 100);
 global B
+global generationCounter
+generationCounter = 0;
 while flag
+   generationCounter = generationCounter +1;
    A = conway(A);
    B = conway(A);
 %  gridGenerator(A)
