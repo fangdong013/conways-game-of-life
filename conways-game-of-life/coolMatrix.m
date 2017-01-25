@@ -1,6 +1,8 @@
 function [coolMatrix] = coolMatrix(coolIndex)
+
     randomMatrix = zeros(100,100);
     randomMatrix(:,:,2) = randi([0 1], 100, 100);
+    
     coolMatrixCell = {randomMatrix;
                       imread('cool/glidergun.png');
                       imread('cool/gliderguns.png');

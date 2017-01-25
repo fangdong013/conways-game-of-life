@@ -33,29 +33,32 @@ function loadRules(hObject)
 function mainConway(hObject)
     handles = guidata(hObject);
     generationCount = 0;
+    
     while handles.shouldDraw == 1
         generationCount = generationCount+1;
         set(handles.generationCounter,'string',num2str(generationCount));
-        neighbours_array = createNeighboursArray(hObject);
-        updateArrayWithNeighbours(hObject, neighbours_array);
-        handles = guidata(hObject);
         
-        handles.pic = imagesc(handles.space);
-       
+        neighboursMatrix = createNeighboursArray(hObject);
+        updateArrayWithNeighbours(hObject, neighboursMatrix);
+      
+        handles = guidata(hObject);
+        %sim drawing 
+        handles.pic = imagesc(handles.space); 
         colormap(gray);
         set(gca, 'XTick', []);
         set(gca, 'YTick', []);
-%         set(handles.pic, 'Parent', handles.gamebox);
         drawnow;
-%         guidata(hObject, handles);
         pause(max(0.001, get(handles.slider1, 'Value')));
+        
     end
     
-function [neighbours_array] = createNeighboursArray(hObject)
-% Creates the array of living neighbours
+function [neighboursMatrix] = createNeighboursArray(hObject)
     handles = guidata(hObject);
-    neighbours_array = zeros(size(handles.space));
-
+    
+    % Creates the array of living neighbours
+    neighboursMatrix = zeros(size(handles.space));
+    
+    %sizes of handles.space to accomodate different sim matrixes
     for i = 1:size(handles.space, 1)
         for j = 1:size(handles.space, 2)
             start_i = max(i - 1, 1);
@@ -65,20 +68,20 @@ function [neighbours_array] = createNeighboursArray(hObject)
             end_j = min(j + 1, size(handles.space, 2));
 
             temp = handles.space(start_i:end_i, start_j:end_j);
-            neighbours_array(i, j) = sum(sum(temp)) - handles.space(i, j);
+            neighboursMatrix(i, j) = sum(sum(temp)) - handles.space(i, j);
         end
     end
 
-function updateArrayWithNeighbours(hObject, neighbours_array)
+function updateArrayWithNeighbours(hObject, neighboursMatrix)
     handles = guidata(hObject);
     
     if ~isempty(handles.space)
         for i = 1:size(handles.space, 1)
             for j = 1:size(handles.space, 2)
                 if handles.space(i, j) == 1
-                    handles.space(i, j) = handles.lifeRule(neighbours_array(i, j) + 1);
+                    handles.space(i, j) = handles.lifeRule(neighboursMatrix(i, j) + 1);
                 else
-                    handles.space(i, j) = handles.deadRule(neighbours_array(i, j) + 1);
+                    handles.space(i, j) = handles.deadRule(neighboursMatrix(i, j) + 1);
                 end
             end
         end
@@ -91,6 +94,7 @@ function varargout = conway_OutputFcn(hObject, eventdata, handles)
     varargout{1} = handles.output;
 
 function start_btn_Callback(hObject, eventdata, handles)
+
     if handles.shouldDraw == 1
         set(hObject, 'String', 'Resume');
         handles.shouldDraw = 0;
@@ -101,7 +105,8 @@ function start_btn_Callback(hObject, eventdata, handles)
         guidata(hObject, handles);
         mainConway(hObject);
     end
-    disp(handles.shouldDraw);
+    
+%     disp(handles.shouldDraw); used for debugging
 
 function stop_btn_Callback(hObject, eventdata, handles)
     handles.shouldDraw = 0;
