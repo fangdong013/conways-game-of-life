@@ -1,0 +1,1 @@
+B36/S23 - Similar to Life but with a small self-replicating pattern.

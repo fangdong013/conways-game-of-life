@@ -109,16 +109,12 @@ function stop_btn_Callback(hObject, eventdata, handles)
     handles.space = [];
     guidata(hObject, handles);
 
-
-
 function slider1_Callback(hObject, eventdata, handles)
-
 
 function slider1_CreateFcn(hObject, eventdata, handles)
 if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor',[.9 .9 .9]);
 end
-
 
 function listbox1_Callback(hObject, eventdata, handles)
 handles = guidata(hObject);
@@ -129,11 +125,26 @@ handles = guidata(hObject);
     handles.lifeRule = ruleMatrix(2,:);
     
     guidata(hObject, handles);
-% ruleIndex = get(handles.listbox1,'Value');
-% set(handles.text3,'string',ruleIndex);
-
 
 function listbox1_CreateFcn(hObject, eventdata, handles)
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+function helpButton_Callback(hObject, eventdata, handles)
+conwayHelp;
+
+function listbox3_Callback(hObject, eventdata, handles)
+handles = guidata(hObject);
+
+index = get(handles.listbox3,'Value');
+myMatrix= coolMatrix(index);
+handles.space = myMatrix;
+
+guidata(hObject, handles);
+
+
+function listbox3_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end

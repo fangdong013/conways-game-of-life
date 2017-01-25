@@ -1,0 +1,1 @@
+B368/S245 - Named after Stephen Morley; also called Move. Supports very high-period and slow spaceships.

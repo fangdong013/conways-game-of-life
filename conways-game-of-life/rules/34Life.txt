@@ -1,0 +1,1 @@
+B34/S34 - Was initially thought to be a stable alternative to Life, until computer simulation found that larger patterns tend to explode. Has many small oscillators and spaceships.
