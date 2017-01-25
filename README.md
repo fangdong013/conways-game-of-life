@@ -1,5 +1,7 @@
 # Conway's game of life visualization
 ![alt tag](http://www.texample.net/media/tikz/examples/PNG/glider.png)
+
+
 This is my final project for a MATLAB programming class.
 Since my degree has a lot to do with biology, I decided to implement Conway's game of life in MATLAB.
 
