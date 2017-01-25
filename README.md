@@ -1,4 +1,5 @@
 # Conway's game of life visualization
+![alt tag](http://www.texample.net/media/tikz/examples/PNG/glider.png)
 This is my final project for a MATLAB programming class.
 Since my degree has a lot to do with biology, I decided to implement Conway's game of life in MATLAB.
 
@@ -7,13 +8,12 @@ If you don't know what game of life is, [this wikipedia article.](https://en.wik
 Current functionality:
  + displays a graph of randomly generated cells which abide by 23/3 rules of GoL (by default)
  + the rules can be changed based on two vectors
- + simple GUI displaying a simulation based on a randomly generated grayscale matrix
-
-To be implemented:
- + GUI that will contain:
+ + GUI that contains:
    + simulation speed slider
    + rule change option
+    + display of generation count
+
+To be implemented:
+   + file I/O
    + grid size options
    + color options
-   + display of generation count
-   + display of time passed
